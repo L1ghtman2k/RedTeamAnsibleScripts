@@ -1,0 +1,26 @@
+-
+  name: Disable Hosts
+  hosts: windows-client
+  strategy: free
+  tasks:
+    - name: Creates directory
+      win_file:
+          path: C:\temp\
+          state: directory
+
+    - name: Get Executable from the host
+      win_get_url:
+        url: http://192.168.13.129/temp/PsExec.exe
+        dest: C:\temp\PsExec.exe
+    -
+      name:  Exclude Windows
+      win_psexec:
+        command: '{{ item }}'
+        executable: C:\temp\PsExec.exe
+        elevated: yes
+        nobanner: yes
+        system: yes
+        interactive: yes
+      with_items:
+        - powershell.exe netsh interface set interface Ethernet0 disable
+#        - powershell.exe Get-Item 'C:\temp' -Force | foreach { $_.Attributes = $_.Attributes -bor "Hidden" }

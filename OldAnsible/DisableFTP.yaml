@@ -1,0 +1,12 @@
+-
+  name: Turn OFf FTP
+  hosts: windows-Mainserver
+  tasks:
+    # - name: FTPOFF
+    #   win_service:
+    #     name: ftp
+    #     state: stopped
+    - name: FTPOFFv2
+      win_service:
+        name: ftpsvc
+        state: stopped

