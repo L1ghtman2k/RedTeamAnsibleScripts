@@ -1,0 +1,7 @@
+[ubuntu-machines]
+10.0.2.26
+10.0.2.27
+
+[windows-machines]
+10.0.2.29
+10.0.2.30

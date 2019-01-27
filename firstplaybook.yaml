@@ -1,0 +1,9 @@
+-
+  name: Deploy Web App
+  hosts: ubuntu-machines
+  tasks:
+    - name: Run WebServer
+      file:
+        path: /lul
+        state: directory
+      become: yes
