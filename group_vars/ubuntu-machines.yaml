@@ -1,3 +1,0 @@
-ansible_user: aibek
-ansible_password: changeme
-ansible_sudo_pass: changeme

@@ -1,0 +1,4 @@
+    - name: Creates temp directory
+      win_file:
+          path: C:\temp\
+          state: directory

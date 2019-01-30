@@ -1,0 +1,4 @@
+    - name: Turn Off FTP
+      win_service:
+        name: ftpsvc
+        state: stopped

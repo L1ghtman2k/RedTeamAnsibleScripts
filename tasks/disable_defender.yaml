@@ -1,0 +1,12 @@
+    -
+      name:  Disable The Windows Defender
+      win_psexec:
+        command: '{{ item }}'
+        executable: C:\temp\PsExec.exe
+        elevated: yes
+        nobanner: yes
+        system: yes
+        interactive: yes
+      with_items:
+        - powershell.exe Set-MpPreference -DisableRealtimeMonitoring $true
+#        - powershell.exe Get-Item 'C:\temp' -Force | foreach { $_.Attributes = $_.Attributes -bor "Hidden" }

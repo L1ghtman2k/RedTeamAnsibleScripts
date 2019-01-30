@@ -1,5 +1,7 @@
-ansible_user: aibek
-ansible_password: Passw0rd
+---
+# group_vars file for windows
+ansible_user: Administrator
+ansible_password: Change.me!
 ansible_connection: winrm
 ansible_winrm_server_cert_validation: ignore
 ansible_winrm_kerberos_delegation: true

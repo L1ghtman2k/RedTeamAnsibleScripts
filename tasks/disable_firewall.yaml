@@ -1,0 +1,7 @@
+    - name: Disable_firewall
+      win_firewall:
+        state: disabled
+        profiles:
+        - Domain
+        - Private
+        - Public

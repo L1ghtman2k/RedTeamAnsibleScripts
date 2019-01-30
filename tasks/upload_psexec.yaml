@@ -1,0 +1,4 @@
+    - name: Upload psexec to the target machine
+      win_copy:
+        src: files/PsExec.exe
+        dest: C:\temp\PsExec.exe
