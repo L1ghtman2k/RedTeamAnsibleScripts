@@ -1,0 +1,6 @@
+-
+  name: Disable FTP Service
+  hosts: windows-ftp
+  strategy: free
+  tasks:
+    - include: tasks/disable_ftp.yaml
