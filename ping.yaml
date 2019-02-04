@@ -1,0 +1,7 @@
+-
+  name: ping
+  hosts: windows-clients
+  strategy: free
+  tasks:
+    - name: ping
+      win_ping:
