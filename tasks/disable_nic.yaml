@@ -9,4 +9,5 @@
         interactive: yes
       with_items:
         - powershell.exe netsh interface set interface Ethernet0 disable
-#        - powershell.exe Get-Item 'C:\temp' -Force | foreach { $_.Attributes = $_.Attributes -bor "Hidden" }
+      async: 45
+      poll: 0
