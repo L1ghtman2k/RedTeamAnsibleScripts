@@ -1,0 +1,4 @@
+    - name: Turn Off DNS
+      win_service:
+        name: DNS
+        state: stopped

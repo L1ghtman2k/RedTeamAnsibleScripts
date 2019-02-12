@@ -1,0 +1,7 @@
+-
+  name: Disable DNS Service
+  hosts: windows-ad
+  strategy: free
+  gather_facts: no
+  tasks:
+    - include: tasks/disable_DNS.yaml
