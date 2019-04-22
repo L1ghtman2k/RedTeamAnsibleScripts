@@ -1,5 +1,5 @@
 -
-  name: Disable FTP Service
+  name: Enable FTP Service
   hosts: windows-ftp
   strategy: free
   tasks:

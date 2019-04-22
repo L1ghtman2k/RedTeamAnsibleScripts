@@ -1,7 +1,0 @@
-ansible_user: Admin
-ansible_password: Change.me!
-ansible_connection: winrm
-ansible_winrm_server_cert_validation: ignore
-ansible_winrm_kerberos_delegation: true
-ansible_winrm_kinit_mode: manual
-ansible_port: 5985
