@@ -74,8 +74,8 @@ ansible_connection=winrm
 ansible_winrm_server_cert_validation=ignore
 
 [windows-clients:vars]
-ansible_user=Admin
-ansible_password=Change.me!
+ansible_user=Admin                  #SHARK\Angler
+ansible_password=Change.me!         #Changeme2019!
 
 
 [windows-ftp:vars]
