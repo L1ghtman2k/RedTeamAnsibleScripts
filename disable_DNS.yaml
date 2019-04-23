@@ -4,4 +4,7 @@
   strategy: free
   gather_facts: no
   tasks:
-    - include: tasks/disable_DNS.yaml
+    - name: Turn Off DNS
+      win_service:
+        name: DNS
+        state: stopped

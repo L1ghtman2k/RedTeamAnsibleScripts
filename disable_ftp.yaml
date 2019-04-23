@@ -3,4 +3,7 @@
   hosts: windows-ftp
   strategy: free
   tasks:
-    - include: tasks/disable_ftp.yaml
+    - name: Turn Off FTP
+      win_service:
+        name: ftpsvc
+        state: stopped

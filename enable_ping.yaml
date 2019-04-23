@@ -1,0 +1,7 @@
+-
+  name: Enable PING
+  hosts: windows-clients
+  strategy: free
+  gather_facts: no
+  tasks:
+    - win_shell: netsh advfirewall firewall delete rule name="Block Red Team"

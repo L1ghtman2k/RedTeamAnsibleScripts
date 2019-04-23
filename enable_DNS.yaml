@@ -1,9 +1,9 @@
 -
-  name: Enable FTP Service
-  hosts: windows-ftp
+  name: Enable DNS Service
+  hosts: windows-ad
   strategy: free
   gather_facts: no
   tasks:
     - win_service:
-        name: ftpsvc
+        name: DNS
         state: started

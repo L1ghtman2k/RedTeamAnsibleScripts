@@ -1,4 +1,0 @@
-    - name: Turn ON FTP
-      win_service:
-        name: ftpsvc
-        state: started

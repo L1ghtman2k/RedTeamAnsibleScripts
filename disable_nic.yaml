@@ -3,6 +3,5 @@
   hosts: windows-clients
   strategy: free
   tasks:
-    - include: tasks/create_temp.yaml
-    - include: tasks/upload_psexec.yaml
-    - include: tasks/disable_nic.yaml
+    - name:  Exclude Windows
+      win_shell: netsh interface set interface Ethernet0 disable
