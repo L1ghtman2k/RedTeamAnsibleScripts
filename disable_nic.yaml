@@ -1,6 +1,6 @@
 -
   name: Disable NIC
-  hosts: windows-clients
+  hosts: windowsclients
   strategy: free
   tasks:
     - name:  Exclude Windows

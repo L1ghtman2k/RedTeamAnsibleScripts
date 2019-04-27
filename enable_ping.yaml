@@ -1,6 +1,6 @@
 -
   name: Enable PING
-  hosts: windows-clients
+  hosts: windowsclients
   strategy: free
   gather_facts: no
   tasks:

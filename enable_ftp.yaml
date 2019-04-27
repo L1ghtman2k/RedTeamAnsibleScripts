@@ -1,6 +1,6 @@
 -
   name: Enable FTP Service
-  hosts: windows-ftp
+  hosts: windowsftp
   strategy: free
   gather_facts: no
   tasks:

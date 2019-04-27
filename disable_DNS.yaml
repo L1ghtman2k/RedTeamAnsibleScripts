@@ -1,6 +1,6 @@
 -
   name: Disable DNS Service
-  hosts: windows-ad
+  hosts: windowsad
   strategy: free
   gather_facts: no
   tasks:
