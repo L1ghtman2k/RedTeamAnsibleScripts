@@ -9,6 +9,9 @@
         shutdown_timeout: 3600
         reboot_timeout: 3600
 
+- pause:
+    minutes: 5
+
 -
   name: Disable Defender
   hosts: windows
