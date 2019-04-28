@@ -1,0 +1,19 @@
+
+-
+  name: Disable Defender
+  hosts: windowsftp
+  strategy: free
+  gather_facts: no
+  tasks:
+    - win_shell: reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update" /v AUOptions /t REG_DWORD /d 1 /f
+      ignore_errors: yes
+    - win_shell: stop-service wuauserv
+      ignore_errors: yes
+    - win_shell: set-service wuauserv –startup disabled
+      ignore_errors: yes
+    - win_shell: net stop wuauserv
+      ignore_errors: yes
+
+
+
+

