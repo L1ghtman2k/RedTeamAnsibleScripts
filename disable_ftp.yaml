@@ -1,6 +1,7 @@
 -
   name: Disable FTP Service
   hosts: windowsftp
+  gather_facts: no
   strategy: free
   tasks:
     - name: Turn Off FTP

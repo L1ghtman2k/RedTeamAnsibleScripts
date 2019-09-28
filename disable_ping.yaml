@@ -1,6 +1,7 @@
 -
   name: Disable PING
   hosts: windowsclients
+  gather_facts: no
   strategy: free
   tasks:
     - win_shell: netsh advfirewall firewall add rule name="Block Red Team" protocol="icmpv4:8,any" dir=in action=block
