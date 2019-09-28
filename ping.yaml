@@ -1,6 +1,6 @@
 -
   name: ping
-  hosts: all
+  hosts: 10.15.1.60, 10.15.1.50, 10.15.1.40, 10.15.2.4
   strategy: free
   tasks:
     - name: ping

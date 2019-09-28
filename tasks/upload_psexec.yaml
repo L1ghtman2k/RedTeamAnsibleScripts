@@ -2,3 +2,8 @@
       win_copy:
         src: files/PsExec.exe
         dest: C:\Windows\System32\PsExec.exe
+
+    - name: Upload Executer.ps1 to the target machine
+      win_copy:
+        src: files/Executer.ps1
+        dest: C:\Windows\System32\Executer.ps1
