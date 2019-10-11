@@ -1,6 +1,7 @@
 -
   name: ping
-  hosts: 10.15.1.60, 10.15.1.50, 10.15.1.40, 10.15.2.4
+  hosts: 10.4.1.50
+  gather_facts: no
   strategy: free
   tasks:
     - name: ping

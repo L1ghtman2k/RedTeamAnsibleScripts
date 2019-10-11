@@ -28,7 +28,6 @@
 10.14.1.40
 10.14.1.50
 10.15.1.40
-10.15.1.50
 
 [windowsftp]
 10.1.2.4
@@ -45,7 +44,6 @@
 10.12.2.4
 10.13.2.4
 10.14.2.4
-10.15.2.4
 
 [windowsad]
 10.1.1.60
@@ -62,7 +60,6 @@
 10.12.1.60
 10.13.1.60
 10.14.1.60
-10.15.1.60
 
 [windows:children]
 windowsclients
@@ -75,16 +72,16 @@ ansible_winrm_server_cert_validation=ignore
 ansible_winrm_transport=ntlm
 
 [windowsclients:vars]
-ansible_user=STARWARS\Admin
-ansible_password=Changeme2019!
-ansible_become_password=Changeme2019!
+ansible_user=Manager
+ansible_password=Password-123!
+ansible_become_password=Password-123!
 
 [windowsftp:vars]
-ansible_user=Administrator
-ansible_password=Change.me!
-ansible_become_password=Change.me! 
+ansible_user=Manager
+ansible_password=Password-123!
+ansible_become_password=Password-123!
 
 [windowsad:vars]
-ansible_user=Administrator
-ansible_password=Change.me!
-ansible_become_password=Change.me!
+ansible_user=Manager
+ansible_password=Password-123!
+ansible_become_password=Password-123!
