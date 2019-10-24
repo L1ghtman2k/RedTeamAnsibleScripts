@@ -1,0 +1,4 @@
+---
+- hosts: windows
+  roles:
+    - role: ansible-windows-remote-desktop

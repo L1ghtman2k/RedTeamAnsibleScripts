@@ -1,6 +1,6 @@
 -
-  name: ping
-  hosts: 10.4.1.50
+  name: Windows Ping
+  hosts: windows
   gather_facts: no
   strategy: free
   tasks:
